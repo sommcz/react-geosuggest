@@ -45,6 +45,13 @@ class App extends React.Component {
   }
 
   /**
+   * When a footer item got selected
+   */
+  onFooterItemSelect() {
+    console.log('onFooterItemSelect'); // eslint-disable-line
+  }
+
+  /**
    * Render the example app
    * @return {Function} React render function
    */
@@ -65,7 +72,10 @@ class App extends React.Component {
           onSuggestSelect={this.onSuggestSelect}
           onSuggestNoResults={this.onSuggestNoResults}
           location={new google.maps.LatLng(53.558572, 9.9278215)}
-          radius="20" />
+          radius="20"
+          footerItem="Footer item"
+          onFooterItemSelect={this.onFooterItemSelect}
+        />
       </div>
     );
   }
