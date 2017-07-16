@@ -24,7 +24,8 @@ export default class SuggestList extends React.Component {
    * @return {Boolean} Hidden or not?
    */
   isHidden() {
-    return this.props.isHidden || this.props.suggests.length === 0;
+    return this.props.isHidden ||
+      (this.props.suggests.length === 0 && !this.props.footerItem);
   }
 
   /**
@@ -72,6 +73,22 @@ export default class SuggestList extends React.Component {
           onSelect={this.props.onSuggestSelect}
           renderSuggestItem={this.props.renderSuggestItem}/>;
       })}
+
+      {this.props.footerItem &&
+        <li
+          className={
+            classnames(
+              'geosuggest__item',
+              'geosuggest__item__footer',
+              this.props.footerItemClassName
+            )
+          }
+          style={this.props.footerItemStyle}
+          onClick={this.props.onFooterItemSelect}
+        >
+          {this.props.footerItem}
+        </li>
+      }
     </ul>;
   }
 }

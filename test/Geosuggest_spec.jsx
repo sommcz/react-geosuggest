@@ -593,4 +593,26 @@ describe('Component: Geosuggest', () => {
       expect(matchedText).to.have.length.of.at.least(1); // eslint-disable-line max-len
     });
   });
+
+  describe('with footerItem', () => { // eslint-disable-line max-len
+    it('should not show the footer item on focus', () => {
+      render({});
+
+      const geoSuggestInput = TestUtils.findRenderedDOMComponentWithClass(component, 'geosuggest__input'); // eslint-disable-line max-len
+      TestUtils.Simulate.focus(geoSuggestInput);
+
+      const suggestItems = TestUtils.scryRenderedDOMComponentsWithClass(component, 'geosuggest__item__footer'); // eslint-disable-line max-len, one-var
+      expect(suggestItems.length).to.equal(0);
+    });
+
+    it('should show the footer item on focus', () => {
+      render({footerItem: 'Footer item'});
+
+      const geoSuggestInput = TestUtils.findRenderedDOMComponentWithClass(component, 'geosuggest__input'); // eslint-disable-line max-len
+      TestUtils.Simulate.focus(geoSuggestInput);
+
+      const suggestItems = TestUtils.scryRenderedDOMComponentsWithClass(component, 'geosuggest__item__footer'); // eslint-disable-line max-len, one-var
+      expect(suggestItems.length).to.equal(1);
+    });
+  });
 });

@@ -70,3 +70,6 @@
 .geosuggest__item__matched-text {
   font-weight: bold;
 }
+.geosuggest__item__footer {
+  border-top: 1px solid #ddd;
+}
